@@ -1,0 +1,30 @@
+<html><!DOCTYPE html>
+<html>
+<head>
+    <title>{{staff.duty}}</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        #page {margin-top: 10%;}
+    </style>
+</head>
+<body>
+    欢迎你！{{staff.staff_name}}    <br>
+    员工编号：{{staff.staff_id}}    <br>
+    联系方式：{{staff.staff_tel}}         <br>
+    站点：{{staff.station}}         <br>
+
+    <div id=page align="center">
+        <form action="/staff_input/" method="post">
+            {%csrf_token%}
+            发件人：
+            <input type="text" name="sender"/>
+            收件人：
+            <input type="text" name="receiver"/>
+            物品种类：
+            <input type="text" name="varity"/>
+            <input type="submit" value="提交"/>
+        </form>
+
+    </div>
+</body>
+</html>

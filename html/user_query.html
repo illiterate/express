@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查询快递</title>
+        <meta charset = "utf-8">
+        <style type="text/css">
+            #top{float: top;}
+            #down{float: top;}
+            #right{float: right;}
+            .left{float: left;width:600px}
+        </style>
+    </head>
+    <body>
+        <div class=left>
+            <div id=top>
+                <h1>发货：</h1>
+                {% for i in send_packages %}
+                    订单号：{{i.id}} <br>
+                    订单日期：{{i.send_time}}   <br>
+                    快递公司：{{i.company}}   <br>
+                    发货人：{{i.sender}}  <br>
+                    收货人：{{i.receiver}}  <br>
+                    发货地址：{{i.send_address}}   <br>
+                    收货地址：{{i.receive_address}}  <br>
+                    订单状态：{{i.status}}  <br><br>
+
+                {%endfor%}
+            </div>
+
+            <div id=down>
+                <h1>收货：</h1>
+                {% for i in receive_packages %}
+                    订单号：{{i.id}} <br>
+                    订单日期：{{i.send_time}}   <br>
+                    快递公司：{{i.company}}   <br>
+                    发货人：{{i.sender}}  <br>
+                    收货人：{{i.receiver}}  <br>
+                    发货地址：{{i.send_address}}   <br>
+                    收货地址：{{i.receive_address}}  <br>
+                    订单状态：{{i.status}}  <br><br>
+
+                {%endfor%}
+            </div>
+        </div>
+
+        <div class=left>
+            <h1>地址管理：</h1>
+            {% for i in address %}
+                    地址编号：{{i.address_id}} <br>
+                    姓名：{{i.name}}   <br>
+                    电话：{{i.tel}}   <br>
+                    详细地址：{{i.address}}  <br><br>
+
+            {%endfor%}
+
+        <hr>
+
+        <h3>更改地址信息</h3>
+        <form action="/address_change/" method="post">
+            {%csrf_token%}
+            地址编号：<br>
+            <input type="text" name="address_id"/> <br>
+            姓名：<br>
+            <input type="text" name="name"/> <br>
+            电话：<br>
+            <input type="text" name="tel"/> <br>
+            详细地址：<br>
+            <input type="text" name="address"/> <br>
+            <input type="submit" value="更改信息"/> <br>
+        </form>
+        <hr>
+
+        <h3>添加地址信息</h3>
+        <form action="/address_add/" method="post">
+            {%csrf_token%}
+            姓名：<br>
+            <input type="text" name="name"/> <br>
+            电话：<br>
+            <input type="text" name="tel"/> <br>
+            详细地址：<br>
+            <input type="text" name="address"/> <br>
+            <input type="submit" value="添加地址"/> <br>
+        </form>
+        <hr>
+        <h3>删除地址信息</h3>
+        <form action="/address_delete/" method="post">
+            {%csrf_token%}
+
+            地址编号：
+            <input type="text" name="address_id"/> 
+            <input type="submit" value="删除"/> <br>
+        </form>
+
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查询快递</title>
+        <meta charset = "utf-8">
+        <style type="text/css">
+            #page {
+                margin-top: 20%;
+            }
+            #search {
+                width: 300px;
+                height: 38px;
+                border-radius: 10px;
+                margin-top: 0px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: transparent;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            }
+            #submit_button{
+                width:182px;
+                height:38px;
+                background:#0086DB;
+                border:0;
+                border-radius:10px;
+                margin-top:0px;
+                color:white;
+                font-size:16px;
+                cursor:pointer;
+            }
+
+            #targe{
+                width:60px;
+                height:38px;
+                background:white;
+                border:0;
+                
+                margin-top:5px;
+                color:#0086DB;
+                font-size:16px;
+
+            }
+            input:focus{
+                border-color:#66AFE9 !important;
+                outline:0;
+                --webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,0.6);
+                --moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,0.6);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,0.6);
+
+            }
+            ::-webkit-input-placeholder{
+                text-indent: 20px;
+                font-size:16px;
+            }
+            ::-moz-input-placeholder{
+                text-indent: 20px;
+                font-size:16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="page" align="center">
+            <form action="/user_login_resu/" method="post">
+                {%csrf_token%}
+                <input value="登录名" id="targe"/>
+                <input type="text" name="id" placeholder="请输入用户id" value="" id="search"/>
+                <br>
+                <input value="密码" id="targe"/>
+                <input type="password" name="password" value="" id="search"/>
+                <br>
+                <input type="submit" value="查询" id="submit_button"/>
+            </form>
+        </div>
+    </body>
+
+</html>

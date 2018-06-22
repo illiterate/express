@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>查询结果</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    订单号：{{package}} <br>
+    订单日期：{{ info.send_time }}   <br>
+    快递公司：{{company.company_name}}   <br>
+    发货人：{{send.name}}  <br>
+    收货人：{{receive.name}}  <br>
+    发货地址：{{receive.address}}   <br>
+    收货地址：{{send.address}}  <br>
+    订单状态：{{status.0.1}}  <br><br>
+
+    {% for i in status %}
+        {{i.1.status_name}}
+        {{i.0.time}}
+        
+        {{"；快件已到达："}}
+        {{i.2}}
+        {{"；下一站："}}
+        {{i.3}}
+        {{"；处理人："}}
+        {{i.4.staff_name}}
+        {{"，电话："}}
+        {{i.4.staff_tel}}
+        
+        <br>
+    {%endfor%}
+
+
+
+</body>
+</html>
